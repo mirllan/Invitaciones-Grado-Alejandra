@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Graduación de Alejandra Benedetti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul-noche: #0A1128;
+    --azul-medio: #141B3D;
+    --azul-panel: #101636;
+    --dorado: #D4AF6A;
+    --dorado-claro: #F1DFB0;
+    --marfil: #F6F1E7;
+    --carbon: #14101A;
+    --rojo-suave: #E39B8C;
+  }
+
+  *{ box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html{ -webkit-text-size-adjust: 100%; }
+  html, body{ margin: 0; padding: 0; }
+
+  body{
+    background-color: var(--azul-noche);
+    background-image:
+      radial-gradient(1px 1px at 10% 18%, rgba(212,175,106,0.6) 50%, transparent 51%),
+      radial-gradient(1px 1px at 76% 12%, rgba(212,175,106,0.5) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 52% 66%, rgba(212,175,106,0.45) 50%, transparent 51%),
+      radial-gradient(1px 1px at 25% 86%, rgba(212,175,106,0.45) 50%, transparent 51%),
+      radial-gradient(1px 1px at 90% 55%, rgba(212,175,106,0.4) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 40% 34%, rgba(212,175,106,0.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 63% 90%, rgba(212,175,106,0.35) 50%, transparent 51%),
+      radial-gradient(0.8px 0.8px at 5% 55%, rgba(212,175,106,0.4) 50%, transparent 51%),
+      radial-gradient(0.8px 0.8px at 96% 25%, rgba(212,175,106,0.35) 50%, transparent 51%),
+      radial-gradient(circle at 15% 8%, rgba(212,175,106,0.12), transparent 45%),
+      radial-gradient(circle at 88% 92%, rgba(212,175,106,0.12), transparent 45%);
+    background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat;
+    background-size: 170px 170px, 210px 210px, 240px 240px, 190px 190px, 230px 230px, 280px 280px, 320px 320px, 150px 150px, 260px 260px, auto, auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 14px 48px;
+    font-family: 'Jost', sans-serif;
+    color: var(--marfil);
+  }
+
+  .invitacion{
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    background: linear-gradient(180deg, var(--azul-medio), var(--azul-panel));
+    border: 1px solid rgba(212,175,106,0.5);
+    padding: 48px 28px 40px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: aparecer 0.9s ease-out forwards;
+  }
+
+  @keyframes aparecer{ to{ opacity: 1; transform: translateY(0); } }
+
+  .invitacion::before{
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(212,175,106,0.35);
+    pointer-events: none;
+  }
+
+  .esquina{ position: absolute; width: 24px; height: 24px; border: 1px solid var(--dorado); pointer-events: none; }
+  .esquina.sup-izq{ top: 0; left: 0; border-right: none; border-bottom: none; }
+  .esquina.sup-der{ top: 0; right: 0; border-left: none; border-bottom: none; }
+  .esquina.inf-izq{ bottom: 0; left: 0; border-right: none; border-top: none; }
+  .esquina.inf-der{ bottom: 0; right: 0; border-left: none; border-top: none; }
+
+  .monograma-cont{ position: relative; display: inline-block; margin-bottom: 18px; }
+
+  .monograma-cont::before{
+    content: "";
+    position: absolute;
+    inset: -14px;
+    background: radial-gradient(circle, rgba(212,175,106,0.25), transparent 70%);
+    z-index: 0;
+  }
+
+  .monograma{
+    position: relative;
+    z-index: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    letter-spacing: 6px;
+    color: var(--dorado-claro);
+  }
+
+  .monograma span{
+    display: inline-block;
+    width: 46px; height: 46px; line-height: 44px;
+    border: 1px solid var(--dorado);
+    border-radius: 50%;
+    font-size: 17px;
+    background: rgba(212,175,106,0.06);
+  }
+
+  .titulo{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(26px, 7vw, 34px);
+    letter-spacing: 1px;
+    margin: 0 0 6px;
+    color: var(--marfil);
+  }
+
+  .subtitulo{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--dorado-claro);
+    margin: 0 0 22px;
+    line-height: 1.5;
+  }
+
+  .orla{ display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 26px; }
+  .orla span{ width: 42px; height: 1px; background: var(--dorado); }
+  .orla i{ width: 7px; height: 7px; background: var(--dorado); transform: rotate(45deg); display: inline-block; }
+
+  .frase{
+    font-size: 14px;
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+    color: rgba(246,241,231,0.88);
+    margin: 0 0 30px;
+  }
+
+  .bloque{ margin-bottom: 24px; }
+
+  .etiqueta{ font-size: 11px; letter-spacing: 2.5px; color: var(--dorado); margin-bottom: 8px; }
+
+  .dato-grande{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 5.5vw, 24px);
+    font-weight: 500;
+    color: var(--marfil);
+    margin: 0 0 2px;
+    word-wrap: break-word;
+  }
+
+  .dato-chico{ font-size: 13px; color: rgba(246,241,231,0.75); margin: 0; }
+
+  .nota-detalle{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12.5px;
+    color: rgba(246,241,231,0.5);
+    text-align: center;
+    margin: -8px 0 24px;
+    line-height: 1.6;
+  }
+
+  .panel{
+    background: rgba(0,0,0,0.22);
+    border: 1px solid rgba(212,175,106,0.3);
+    padding: 20px 18px 22px;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .panel .etiqueta{ text-align: center; }
+
+  .panel p.desc{
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: rgba(246,241,231,0.75);
+    margin: 0 0 14px;
+    text-align: center;
+  }
+
+  .campo{
+    width: 100%;
+    padding: 13px 12px;
+    background: rgba(246,241,231,0.06);
+    border: 1px solid rgba(212,175,106,0.45);
+    color: var(--marfil);
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    margin-bottom: 12px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .campo::placeholder{ color: rgba(246,241,231,0.4); }
+  .campo:focus{ outline: none; border-color: var(--dorado); background: rgba(246,241,231,0.1); }
+
+  select.campo{
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%23D4AF6A'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+
+  .lista-resultados{
+    border: 1px solid rgba(212,175,106,0.35);
+    background: rgba(0,0,0,0.32);
+    margin: -6px 0 12px;
+    max-height: 190px;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .resultado{
+    padding: 11px 12px;
+    font-size: 13.5px;
+    color: rgba(246,241,231,0.9);
+    cursor: pointer;
+    border-bottom: 1px solid rgba(212,175,106,0.15);
+  }
+  .resultado:last-child{ border-bottom: none; }
+  .resultado:hover, .resultado:focus{ background: rgba(212,175,106,0.15); }
+
+  .sin-resultados{
+    padding: 11px 12px;
+    font-size: 12.5px;
+    color: rgba(246,241,231,0.5);
+    font-style: italic;
+  }
+
+  .invitado-chip{
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: rgba(212,175,106,0.12);
+    border: 1px solid var(--dorado);
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+
+  .invitado-chip .nombre-chip{ font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--marfil); }
+
+  .invitado-chip button{
+    background: transparent;
+    border: 1px solid rgba(212,175,106,0.5);
+    color: var(--dorado-claro);
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .invitado-chip button:hover{ background: var(--dorado); color: var(--carbon); }
+
+  .campo-acompanante-extra{ margin-bottom: 10px; }
+
+  .btn{
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    border: 1px solid var(--dorado);
+    color: var(--dorado-claro);
+    font-family: 'Jost', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, opacity 0.2s ease;
+    min-height: 46px;
+  }
+
+  .btn:hover{ background: var(--dorado); color: var(--carbon); }
+  .btn:focus-visible{ outline: 2px solid var(--dorado-claro); outline-offset: 2px; }
+  .btn:disabled{ opacity: 0.55; cursor: default; }
+
+  .btn-secundario{
+    border-color: rgba(212,175,106,0.4);
+    color: rgba(246,241,231,0.75);
+    margin-top: 10px;
+  }
+  .btn-secundario:hover{ background: rgba(212,175,106,0.15); color: var(--marfil); }
+
+  .aviso{ font-size: 11.5px; color: var(--dorado-claro); margin-top: 10px; min-height: 14px; text-align: center; }
+  .aviso.error{ color: var(--rojo-suave); }
+
+  .rsvp-listo{ display: none; text-align: center; }
+
+  .rsvp-listo .check{
+    width: 54px; height: 54px;
+    border: 1px solid var(--dorado);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--dorado-claro);
+  }
+
+  .rsvp-listo .mensaje{ font-size: 13.5px; line-height: 1.8; color: rgba(246,241,231,0.88); margin: 0 0 14px; }
+  .rsvp-listo .mensaje strong{ color: var(--marfil); }
+  .rsvp-listo .estado-envio{ font-size: 12px; line-height: 1.6; color: rgba(246,241,231,0.6); margin: 0 0 18px; }
+
+  .respaldo{ margin-top: 8px; padding-top: 18px; border-top: 1px solid rgba(212,175,106,0.25); }
+  .respaldo p{ font-size: 11.5px; color: rgba(246,241,231,0.55); margin: 0 0 10px; }
+  .respaldo .btn{ margin-bottom: 10px; }
+
+  @media (max-width: 380px){ .invitacion{ padding: 40px 18px 32px; } }
+</style>
+</head>
+<body>
+
+<div class="invitacion">
+  <span class="esquina sup-izq"></span>
+  <span class="esquina sup-der"></span>
+  <span class="esquina inf-izq"></span>
+  <span class="esquina inf-der"></span>
+
+  <div class="monograma-cont">
+    <div class="monograma"><span>AB</span></div>
+  </div>
+  <h1 class="titulo">Alejandra Benedetti</h1>
+  <p class="subtitulo">te invita a celebrar su graduación<br>con una cena especial</p>
+  <div class="orla"><span></span><i></i><span></span></div>
+
+  <p class="frase">Después de tanto esfuerzo, llegó el momento de celebrarlo.<br>Me encantaría compartir esta noche contigo.</p>
+
+  <div class="bloque">
+    <div class="etiqueta">FECHA Y HORA</div>
+    <p class="dato-grande">14 de septiembre</p>
+    <p class="dato-chico">6:40 p.m.</p>
+  </div>
+
+  <div class="bloque">
+    <div class="etiqueta">LUGAR</div>
+    <p class="dato-grande">Cervecería Tumequé</p>
+    <p class="dato-chico">Calle 29 Bis #5-66</p>
+  </div>
+
+  <div class="panel">
+    <div class="etiqueta">CÓMO LLEGAR</div>
+    <p class="desc">Escribe tu dirección y te mostramos la mejor ruta hasta el lugar del evento.</p>
+    <input type="text" id="direccion" class="campo" placeholder="Tu dirección o barrio" autocomplete="street-address">
+    <a href="#" id="linkRuta" class="btn" target="_blank" rel="noopener noreferrer">VER MEJOR RUTA</a>
+    <p class="aviso" id="avisoRuta"></p>
+  </div>
+
+  <div class="bloque">
+    <div class="etiqueta">CÓDIGO DE VESTIMENTA</div>
+    <p class="dato-grande">Formal</p>
+    <p class="dato-chico">Traje</p>
+  </div>
+
+  <p class="nota-detalle">Tu presencia es el mejor regalo; si deseas traer un pequeño detalle, será recibido con cariño.</p>
+
+  <div class="orla"><span></span><i></i><span></span></div>
+
+  <div id="panelRsvp" class="panel">
+    <div class="etiqueta">CONFIRMA TU ASISTENCIA</div>
+
+    <div id="buscadorInvitado">
+      <input type="text" id="inputBusqueda" class="campo" placeholder="Escribe tu nombre para buscar..." autocomplete="off">
+      <div id="listaResultados" class="lista-resultados"></div>
+    </div>
+
+    <div id="invitadoChip" class="invitado-chip">
+      <span class="nombre-chip" id="nombreChip"></span>
+      <button type="button" onclick="cambiarInvitado()">CAMBIAR</button>
+    </div>
+
+    <input type="tel" id="rsvpTelefono" class="campo" placeholder="Tu número de teléfono" autocomplete="tel" inputmode="numeric">
+
+    <div id="bloqueAcompanantes" style="display:none;">
+      <div class="etiqueta">¿VIENES ACOMPAÑADO?</div>
+      <select id="numAcompanantes" class="campo"></select>
+      <div id="camposNombresAcompanantes"></div>
+    </div>
+
+    <p class="aviso" id="avisoRsvp"></p>
+
+    <button class="btn" id="btnConfirmar" onclick="confirmarAsistencia()" type="button">CONFIRMAR ASISTENCIA</button>
+  </div>
+
+  <div id="rsvpListo" class="rsvp-listo">
+    <div class="check">&#10003;</div>
+    <p class="mensaje" id="mensajeListo"></p>
+    <p class="estado-envio" id="estadoEnvio"></p>
+
+    <div class="respaldo">
+      <button class="btn btn-secundario" onclick="enviarSmsRespaldo()" type="button">ENVIAR SMS</button>
+      <button class="btn btn-secundario" onclick="enviarWhatsappRespaldo()" type="button">ENVIAR POR WHATSAPP</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const destino = "Cervecería Tumequé, Calle 29 Bis #5-66, Bogotá";
+
+  // Número de la anfitriona (con indicativo de país, sin espacios ni signos)
+  const TELEFONO_ANFITRIONA = "573209102700";
+
+  // Endpoint de Formspree para recibir un correo cada vez que alguien confirma.
+  // Se obtiene una sola vez creando un formulario gratis en https://formspree.io
+  // (te da una URL tipo "https://formspree.io/f/xxxxxxxx" para pegar aquí).
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnpqwgkl";
+
+  // Lista de invitados y cuántos acompañantes puede llevar cada uno
+  const INVITADOS = [
+    { nombre: "Jakelines Benedetti", acompanantes: 1 },
+    { nombre: "Carmen Benedetti", acompanantes: 1 },
+    { nombre: "Gemma Benedetti", acompanantes: 1 },
+    { nombre: "Carolina Benedetti", acompanantes: 0 },
+    { nombre: "Laura Benedetti", acompanantes: 2 },
+    { nombre: "Angelica Benedetti", acompanantes: 0 },
+    { nombre: "Diego Sanchez Benedetti", acompanantes: 0 },
+    { nombre: "Marco Benedetti", acompanantes: 0 },
+    { nombre: "Tania Patron", acompanantes: 0 },
+    { nombre: "Diego Benedetti", acompanantes: 0 },
+    { nombre: "Nicole Pedraza", acompanantes: 0 },
+    { nombre: "Sandy Sanchez", acompanantes: 0 },
+    { nombre: "Victor Torres", acompanantes: 0 },
+    { nombre: "Mirllan Suarez", acompanantes: 0 },
+    { nombre: "Jonathan", acompanantes: 0 },
+    { nombre: "Hugo Rubio", acompanantes: 1 },
+    { nombre: "Santiago Herrera", acompanantes: 0 }
+  ];
+
+  const linkRuta = document.getElementById('linkRuta');
+
+  linkRuta.addEventListener('click', function(e){
+    const campo = document.getElementById('direccion');
+    const aviso = document.getElementById('avisoRuta');
+    const origen = campo.value.trim();
+
+    if(!origen){
+      e.preventDefault();
+      aviso.textContent = "Por favor escribe tu dirección primero.";
+      aviso.classList.add('error');
+      campo.focus();
+      return;
+    }
+
+    aviso.classList.remove('error');
+    aviso.textContent = "";
+
+    const url = "https://www.google.com/maps/dir/?api=1&origin=" +
+      encodeURIComponent(origen) +
+      "&destination=" + encodeURIComponent(destino) +
+      "&travelmode=driving";
+
+    linkRuta.setAttribute('href', url);
+    // El navegador sigue el enlace de forma nativa después de este clic
+  });
+
+  document.getElementById('direccion').addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); linkRuta.click(); }
+  });
+
+  // --- Buscador de invitados ---
+  const inputBusqueda = document.getElementById('inputBusqueda');
+  const listaResultados = document.getElementById('listaResultados');
+  const invitadoChip = document.getElementById('invitadoChip');
+  const nombreChip = document.getElementById('nombreChip');
+  const buscadorInvitado = document.getElementById('buscadorInvitado');
+  const bloqueAcompanantes = document.getElementById('bloqueAcompanantes');
+  const numAcompanantesSelect = document.getElementById('numAcompanantes');
+  const camposNombresAcompanantes = document.getElementById('camposNombresAcompanantes');
+
+  let invitadoSeleccionado = null;
+
+  function renderResultados(texto){
+    const q = texto.trim().toLowerCase();
+    listaResultados.innerHTML = "";
+
+    if(!q){ listaResultados.style.display = "none"; return; }
+
+    const coincidencias = INVITADOS.filter(function(inv){
+      return inv.nombre.toLowerCase().includes(q);
+    });
+
+    if(coincidencias.length === 0){
+      listaResultados.innerHTML = '<div class="sin-resultados">No encontramos ese nombre en la lista.</div>';
+      listaResultados.style.display = "block";
+      return;
+    }
+
+    coincidencias.forEach(function(inv){
+      const item = document.createElement('div');
+      item.className = "resultado";
+      item.tabIndex = 0;
+      item.textContent = inv.nombre;
+      item.addEventListener('click', function(){ seleccionarInvitado(inv); });
+      item.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ seleccionarInvitado(inv); } });
+      listaResultados.appendChild(item);
+    });
+
+    listaResultados.style.display = "block";
+  }
+
+  inputBusqueda.addEventListener('input', function(){ renderResultados(this.value); });
+
+  function textoOpcionAcompanantes(i){
+    if(i === 0) return "Voy solo/a";
+    if(i === 1) return "Voy con una persona más";
+    return "Voy con " + i + " personas más";
+  }
+
+  function seleccionarInvitado(inv){
+    invitadoSeleccionado = inv;
+    nombreChip.textContent = inv.nombre;
+
+    buscadorInvitado.style.display = "none";
+    invitadoChip.style.display = "flex";
+    listaResultados.style.display = "none";
+    inputBusqueda.value = "";
+
+    if(inv.acompanantes === 0){
+      bloqueAcompanantes.style.display = "none";
+    } else {
+      bloqueAcompanantes.style.display = "block";
+      numAcompanantesSelect.innerHTML = "";
+      for(let i = 0; i <= inv.acompanantes; i++){
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = textoOpcionAcompanantes(i);
+        numAcompanantesSelect.appendChild(opt);
+      }
+      renderCamposAcompanantes(0);
+    }
+
+    document.getElementById('avisoRsvp').textContent = "";
+    document.getElementById('avisoRsvp').classList.remove('error');
+  }
+
+  function cambiarInvitado(){
+    invitadoSeleccionado = null;
+    invitadoChip.style.display = "none";
+    buscadorInvitado.style.display = "block";
+    bloqueAcompanantes.style.display = "none";
+    inputBusqueda.focus();
+  }
+
+  numAcompanantesSelect.addEventListener('change', function(){
+    renderCamposAcompanantes(parseInt(this.value, 10));
+  });
+
+  function renderCamposAcompanantes(cantidad){
+    camposNombresAcompanantes.innerHTML = "";
+    for(let i = 1; i <= cantidad; i++){
+      const input = document.createElement('input');
+      input.type = "text";
+      input.className = "campo campo-acompanante-extra";
+      input.placeholder = "Nombre de tu acompañante " + i;
+      input.id = "acompanante" + i;
+      camposNombresAcompanantes.appendChild(input);
+    }
+  }
+
+  function construirLinkSms(numero, texto){
+    const esIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const separador = esIOS ? '&' : '?';
+    return "sms:" + numero + separador + "body=" + encodeURIComponent(texto);
+  }
+
+  function construirLinkWhatsapp(numero, texto){
+    return "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
+  }
+
+  let datosConfirmacion = null;
+
+  function confirmarAsistencia(){
+    const aviso = document.getElementById('avisoRsvp');
+    const telefono = document.getElementById('rsvpTelefono').value.trim();
+
+    if(!invitadoSeleccionado){
+      aviso.textContent = "Por favor busca y selecciona tu nombre de la lista.";
+      aviso.classList.add('error');
+      return;
+    }
+    if(!telefono){
+      aviso.textContent = "Por favor escribe tu número de teléfono.";
+      aviso.classList.add('error');
+      return;
+    }
+
+    let nombresAcompanantes = [];
+    if(invitadoSeleccionado.acompanantes > 0){
+      const cantidad = parseInt(numAcompanantesSelect.value, 10);
+      for(let i = 1; i <= cantidad; i++){
+        const val = document.getElementById('acompanante' + i).value.trim();
+        if(!val){
+          aviso.textContent = "Escribe el nombre de cada acompañante.";
+          aviso.classList.add('error');
+          return;
+        }
+        nombresAcompanantes.push(val);
+      }
+    }
+
+    aviso.classList.remove('error');
+    aviso.textContent = "";
+
+    const nombre = invitadoSeleccionado.nombre;
+    const textoAcompanantes = nombresAcompanantes.length ? nombresAcompanantes.join(", ") : "Va solo/a";
+
+    datosConfirmacion = { nombre, telefono, acompanantes: textoAcompanantes };
+
+    let textoConfirmacion = "<strong>¡Gracias, " + nombre + "!</strong> Tu asistencia queda registrada para el 14 de septiembre a las 6:40 p.m.";
+    if(nombresAcompanantes.length){
+      textoConfirmacion += " Vienes junto con <strong>" + nombresAcompanantes.join(", ") + "</strong>.";
+    }
+    document.getElementById('mensajeListo').innerHTML = textoConfirmacion;
+
+    document.getElementById('panelRsvp').style.display = 'none';
+    document.getElementById('rsvpListo').style.display = 'block';
+
+    // Notifica automáticamente a la anfitriona por correo, sin acción del invitado.
+    notificarAnfitrionaPorCorreo();
+  }
+
+  function textoMensajeConfirmacion(){
+    const { nombre, telefono, acompanantes } = datosConfirmacion;
+    return "Confirmo mi asistencia a la cena de graduación de Alejandra (14 de septiembre, 6:40 p.m.). Nombre: " +
+      nombre + ". Teléfono: " + telefono + ". Acompañantes: " + acompanantes + ".";
+  }
+
+  function notificarAnfitrionaPorCorreo(){
+    const estadoEnvio = document.getElementById('estadoEnvio');
+    const { nombre, telefono, acompanantes } = datosConfirmacion;
+
+    if(!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT === "PON_AQUI_TU_ENDPOINT"){
+      estadoEnvio.textContent = "Usa uno de los botones de abajo para avisarle a la anfitriona.";
+      return;
+    }
+
+    fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        nombre: nombre,
+        telefono: telefono,
+        acompanantes: acompanantes,
+        mensaje: textoMensajeConfirmacion()
+      })
+    })
+      .then(function(res){
+        if(res.ok){
+          estadoEnvio.textContent = "Se notificó automáticamente por correo a la anfitriona.";
+        } else {
+          estadoEnvio.textContent = "No se pudo notificar automáticamente. Usa uno de los botones de abajo.";
+        }
+      })
+      .catch(function(){
+        estadoEnvio.textContent = "No se pudo notificar automáticamente. Usa uno de los botones de abajo.";
+      });
+  }
+
+  function enviarSmsRespaldo(){
+    if(!datosConfirmacion) return;
+    window.location.href = construirLinkSms(TELEFONO_ANFITRIONA, textoMensajeConfirmacion());
+  }
+
+  function enviarWhatsappRespaldo(){
+    if(!datosConfirmacion) return;
+    window.open(construirLinkWhatsapp(TELEFONO_ANFITRIONA, textoMensajeConfirmacion()), "_blank");
+  }
+</script>
+
+</body>
+</html>
