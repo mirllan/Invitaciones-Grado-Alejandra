@@ -202,6 +202,14 @@
     background-position: right 14px center;
   }
 
+  .campo-selector{
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%23D4AF6A'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+    user-select: none;
+  }
+
   .lista-resultados{
     border: 1px solid rgba(212,175,106,0.35);
     background: rgba(0,0,0,0.32);
@@ -347,11 +355,14 @@
       <button type="button" onclick="cambiarInvitado()">CAMBIAR</button>
     </div>
 
-    <input type="tel" id="rsvpTelefono" class="campo" placeholder="Tu número de teléfono" autocomplete="tel" inputmode="numeric">
+    <input type="tel" id="rsvpTelefono" class="campo" placeholder="Tu número de teléfono" autocomplete="tel" inputmode="numeric" pattern="[0-9]*" maxlength="15">
 
     <div id="bloqueAcompanantes" style="display:none;">
       <div class="etiqueta">¿VIENES ACOMPAÑADO?</div>
-      <select id="numAcompanantes" class="campo"></select>
+      <div id="selectorAcompanantes" class="campo campo-selector" tabindex="0" role="button" aria-haspopup="listbox">
+        <span id="textoAcompanantes">Voy solo/a</span>
+      </div>
+      <div id="listaAcompanantes" class="lista-resultados"></div>
       <div id="camposNombresAcompanantes"></div>
     </div>
 
@@ -460,6 +471,10 @@
     if(e.key === 'Enter'){ e.preventDefault(); linkRuta.click(); }
   });
 
+  document.getElementById('rsvpTelefono').addEventListener('input', function(){
+    this.value = this.value.replace(/\D/g, "");
+  });
+
   // --- Buscador de invitados ---
   const inputBusqueda = document.getElementById('inputBusqueda');
   const listaResultados = document.getElementById('listaResultados');
@@ -467,10 +482,13 @@
   const nombreChip = document.getElementById('nombreChip');
   const buscadorInvitado = document.getElementById('buscadorInvitado');
   const bloqueAcompanantes = document.getElementById('bloqueAcompanantes');
-  const numAcompanantesSelect = document.getElementById('numAcompanantes');
+  const selectorAcompanantes = document.getElementById('selectorAcompanantes');
+  const textoAcompanantes = document.getElementById('textoAcompanantes');
+  const listaAcompanantes = document.getElementById('listaAcompanantes');
   const camposNombresAcompanantes = document.getElementById('camposNombresAcompanantes');
 
   let invitadoSeleccionado = null;
+  let cantidadAcompanantesSeleccionada = 0;
 
   function renderResultados(texto){
     const q = texto.trim().toLowerCase();
@@ -522,14 +540,8 @@
       bloqueAcompanantes.style.display = "none";
     } else {
       bloqueAcompanantes.style.display = "block";
-      numAcompanantesSelect.innerHTML = "";
-      for(let i = 0; i <= inv.acompanantes; i++){
-        const opt = document.createElement('option');
-        opt.value = i;
-        opt.textContent = textoOpcionAcompanantes(i);
-        numAcompanantesSelect.appendChild(opt);
-      }
-      renderCamposAcompanantes(0);
+      renderOpcionesAcompanantes(inv.acompanantes);
+      seleccionarCantidadAcompanantes(0);
     }
 
     document.getElementById('avisoRsvp').textContent = "";
@@ -544,8 +556,41 @@
     inputBusqueda.focus();
   }
 
-  numAcompanantesSelect.addEventListener('change', function(){
-    renderCamposAcompanantes(parseInt(this.value, 10));
+  function renderOpcionesAcompanantes(maxAcompanantes){
+    listaAcompanantes.innerHTML = "";
+    for(let i = 0; i <= maxAcompanantes; i++){
+      const item = document.createElement('div');
+      item.className = "resultado";
+      item.tabIndex = 0;
+      item.textContent = textoOpcionAcompanantes(i);
+      item.addEventListener('click', function(){ seleccionarCantidadAcompanantes(i); });
+      item.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ seleccionarCantidadAcompanantes(i); } });
+      listaAcompanantes.appendChild(item);
+    }
+  }
+
+  function seleccionarCantidadAcompanantes(cantidad){
+    cantidadAcompanantesSeleccionada = cantidad;
+    textoAcompanantes.textContent = textoOpcionAcompanantes(cantidad);
+    listaAcompanantes.style.display = "none";
+    renderCamposAcompanantes(cantidad);
+  }
+
+  selectorAcompanantes.addEventListener('click', function(){
+    listaAcompanantes.style.display = (listaAcompanantes.style.display === "block") ? "none" : "block";
+  });
+
+  selectorAcompanantes.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      selectorAcompanantes.click();
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    if(!selectorAcompanantes.contains(e.target) && !listaAcompanantes.contains(e.target)){
+      listaAcompanantes.style.display = "none";
+    }
   });
 
   function renderCamposAcompanantes(cantidad){
@@ -589,7 +634,7 @@
 
     let nombresAcompanantes = [];
     if(invitadoSeleccionado.acompanantes > 0){
-      const cantidad = parseInt(numAcompanantesSelect.value, 10);
+      const cantidad = cantidadAcompanantesSeleccionada;
       for(let i = 1; i <= cantidad; i++){
         const val = document.getElementById('acompanante' + i).value.trim();
         if(!val){
