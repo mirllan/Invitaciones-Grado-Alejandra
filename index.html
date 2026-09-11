@@ -313,13 +313,6 @@
   .btn:focus-visible{ outline: 2px solid var(--dorado-claro); outline-offset: 2px; }
   .btn:disabled{ opacity: 0.55; cursor: default; }
 
-  .btn-secundario{
-    border-color: rgba(212,175,106,0.4);
-    color: rgba(246,241,231,0.75);
-    margin-top: 10px;
-  }
-  .btn-secundario:hover{ background: rgba(212,175,106,0.15); color: var(--marfil); }
-
   .aviso{ font-size: 11.5px; color: var(--dorado-claro); margin-top: 10px; min-height: 14px; text-align: center; }
   .aviso.error{ color: var(--rojo-suave); }
 
@@ -339,10 +332,6 @@
   .rsvp-listo .mensaje{ font-size: 13.5px; line-height: 1.8; color: rgba(246,241,231,0.88); margin: 0 0 14px; }
   .rsvp-listo .mensaje strong{ color: var(--marfil); }
   .rsvp-listo .estado-envio{ font-size: 12px; line-height: 1.6; color: rgba(246,241,231,0.6); margin: 0 0 18px; }
-
-  .respaldo{ margin-top: 8px; padding-top: 18px; border-top: 1px solid rgba(212,175,106,0.25); }
-  .respaldo p{ font-size: 11.5px; color: rgba(246,241,231,0.55); margin: 0 0 10px; }
-  .respaldo .btn{ margin-bottom: 10px; }
 
   @media (max-width: 380px){ .invitacion{ padding: 40px 18px 32px; } }
 </style>
@@ -419,11 +408,6 @@
     <div class="check">&#10003;</div>
     <p class="mensaje" id="mensajeListo"></p>
     <p class="estado-envio" id="estadoEnvio"></p>
-
-    <div class="respaldo">
-      <button class="btn btn-secundario" onclick="enviarSmsRespaldo()" type="button">ENVIAR SMS</button>
-      <button class="btn btn-secundario" onclick="enviarWhatsappRespaldo()" type="button">ENVIAR POR WHATSAPP</button>
-    </div>
   </div>
 
   <div class="orla"><span></span><i></i><span></span></div>
@@ -470,9 +454,6 @@
 
 <script>
   const destino = "Cervecería Tumequé, Calle 29 Bis #5-66, Bogotá";
-
-  // Número de la anfitriona (con indicativo de país, sin espacios ni signos)
-  const TELEFONO_ANFITRIONA = "573209102700";
 
   // Endpoint de Formspree para recibir un correo cada vez que alguien confirma.
   // Se obtiene una sola vez creando un formulario gratis en https://formspree.io
@@ -665,16 +646,6 @@
     }
   }
 
-  function construirLinkSms(numero, texto){
-    const esIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    const separador = esIOS ? '&' : '?';
-    return "sms:" + numero + separador + "body=" + encodeURIComponent(texto);
-  }
-
-  function construirLinkWhatsapp(numero, texto){
-    return "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
-  }
-
   let datosConfirmacion = null;
 
   function confirmarAsistencia(){
@@ -738,7 +709,7 @@
     const { nombre, telefono, acompanantes } = datosConfirmacion;
 
     if(!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT === "PON_AQUI_TU_ENDPOINT"){
-      estadoEnvio.textContent = "Usa uno de los botones de abajo para avisarle a la anfitriona.";
+      estadoEnvio.textContent = "";
       return;
     }
 
@@ -753,25 +724,11 @@
       })
     })
       .then(function(res){
-        if(res.ok){
-          estadoEnvio.textContent = "Se notificó automáticamente por correo a la anfitriona.";
-        } else {
-          estadoEnvio.textContent = "No se pudo notificar automáticamente. Usa uno de los botones de abajo.";
-        }
+        estadoEnvio.textContent = res.ok ? "Se notificó automáticamente por correo a la anfitriona." : "";
       })
       .catch(function(){
-        estadoEnvio.textContent = "No se pudo notificar automáticamente. Usa uno de los botones de abajo.";
+        estadoEnvio.textContent = "";
       });
-  }
-
-  function enviarSmsRespaldo(){
-    if(!datosConfirmacion) return;
-    window.location.href = construirLinkSms(TELEFONO_ANFITRIONA, textoMensajeConfirmacion());
-  }
-
-  function enviarWhatsappRespaldo(){
-    if(!datosConfirmacion) return;
-    window.open(construirLinkWhatsapp(TELEFONO_ANFITRIONA, textoMensajeConfirmacion()), "_blank");
   }
 </script>
 
