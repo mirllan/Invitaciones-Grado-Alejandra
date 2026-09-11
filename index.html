@@ -155,11 +155,11 @@
   .nota-detalle{
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 12.5px;
-    color: rgba(246,241,231,0.5);
+    font-size: clamp(15px, 4vw, 17px);
+    color: var(--dorado-claro);
     text-align: center;
-    margin: -8px 0 24px;
-    line-height: 1.6;
+    margin: 20px 0 4px;
+    line-height: 1.7;
   }
 
   .panel{
@@ -334,30 +334,6 @@
     <p class="dato-chico">6:40 p.m.</p>
   </div>
 
-  <div class="bloque">
-    <div class="etiqueta">LUGAR</div>
-    <p class="dato-grande">Cervecería Tumequé</p>
-    <p class="dato-chico">Calle 29 Bis #5-66</p>
-  </div>
-
-  <div class="panel">
-    <div class="etiqueta">CÓMO LLEGAR</div>
-    <p class="desc">Escribe tu dirección y te mostramos la mejor ruta hasta el lugar del evento.</p>
-    <input type="text" id="direccion" class="campo" placeholder="Tu dirección o barrio" autocomplete="street-address">
-    <a href="#" id="linkRuta" class="btn" target="_blank" rel="noopener noreferrer">VER MEJOR RUTA</a>
-    <p class="aviso" id="avisoRuta"></p>
-  </div>
-
-  <div class="bloque">
-    <div class="etiqueta">CÓDIGO DE VESTIMENTA</div>
-    <p class="dato-grande">Formal</p>
-    <p class="dato-chico">Traje</p>
-  </div>
-
-  <p class="nota-detalle">Tu presencia es el mejor regalo; si deseas traer un pequeño detalle, será recibido con cariño.</p>
-
-  <div class="orla"><span></span><i></i><span></span></div>
-
   <div id="panelRsvp" class="panel">
     <div class="etiqueta">CONFIRMA TU ASISTENCIA</div>
 
@@ -394,6 +370,30 @@
       <button class="btn btn-secundario" onclick="enviarWhatsappRespaldo()" type="button">ENVIAR POR WHATSAPP</button>
     </div>
   </div>
+
+  <div class="orla"><span></span><i></i><span></span></div>
+
+  <div class="bloque">
+    <div class="etiqueta">LUGAR</div>
+    <p class="dato-grande">Cervecería Tumequé</p>
+    <p class="dato-chico">Calle 29 Bis #5-66</p>
+  </div>
+
+  <div class="panel">
+    <div class="etiqueta">CÓMO LLEGAR</div>
+    <p class="desc">Escribe tu dirección y te mostramos la mejor ruta hasta el lugar del evento.</p>
+    <input type="text" id="direccion" class="campo" placeholder="Tu dirección o barrio" autocomplete="street-address">
+    <a href="#" id="linkRuta" class="btn" target="_blank" rel="noopener noreferrer">VER MEJOR RUTA</a>
+    <p class="aviso" id="avisoRuta"></p>
+  </div>
+
+  <div class="bloque">
+    <div class="etiqueta">CÓDIGO DE VESTIMENTA</div>
+    <p class="dato-grande">Formal</p>
+    <p class="dato-chico">Traje</p>
+  </div>
+
+  <p class="nota-detalle">Tu presencia es el mejor regalo; si deseas traer un pequeño detalle, será recibido con cariño.</p>
 
 </div>
 
