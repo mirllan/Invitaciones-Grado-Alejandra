@@ -60,6 +60,19 @@
     opacity: 0;
     transform: translateY(14px);
     animation: aparecer 0.9s ease-out forwards;
+    box-shadow:
+      0 35px 60px -20px rgba(0,0,0,0.65),
+      0 15px 30px -12px rgba(0,0,0,0.5);
+  }
+
+  .invitacion::after{
+    content: "";
+    position: absolute;
+    inset: -34px;
+    z-index: -1;
+    background: radial-gradient(ellipse at center, rgba(212,175,106,0.16), transparent 70%);
+    filter: blur(18px);
+    pointer-events: none;
   }
 
   @keyframes aparecer{ to{ opacity: 1; transform: translateY(0); } }
@@ -77,6 +90,21 @@
   .esquina.sup-der{ top: 0; right: 0; border-left: none; border-bottom: none; }
   .esquina.inf-izq{ bottom: 0; left: 0; border-right: none; border-top: none; }
   .esquina.inf-der{ bottom: 0; right: 0; border-left: none; border-top: none; }
+
+  .flourish{
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    height: auto;
+    margin: 0 auto 20px;
+    overflow: visible;
+  }
+
+  .flourish.abajo{ margin: 20px auto 0; transform: rotate(180deg); }
+
+  .flourish-stem{ fill: none; stroke: var(--dorado); stroke-width: 1.2; stroke-linecap: round; }
+  .flourish-leaf{ fill: #1B2E63; stroke: var(--dorado); stroke-width: 0.7; }
+  .flourish-center{ fill: var(--dorado); }
 
   .monograma-cont{ position: relative; display: inline-block; margin-bottom: 18px; }
 
@@ -327,6 +355,22 @@
   <span class="esquina inf-izq"></span>
   <span class="esquina inf-der"></span>
 
+  <svg class="flourish" viewBox="0 0 220 50" aria-hidden="true">
+    <g>
+      <path class="flourish-stem" d="M110 25 C 128 21, 138 9, 163 11 C 179 12, 189 21, 206 16"/>
+      <path class="flourish-leaf" d="M138 15 C 143 7, 153 5, 158 11 C 153 17, 143 19, 138 15 Z" transform="rotate(-20 148 12)"/>
+      <path class="flourish-leaf" d="M163 21 C 166 13, 176 10, 181 16 C 176 22, 166 25, 163 21 Z" transform="rotate(8 173 16)"/>
+      <path class="flourish-leaf" d="M186 11 C 189 5, 197 3, 201 8 C 197 13, 189 15, 186 11 Z" transform="rotate(-12 194 9)"/>
+    </g>
+    <g transform="scale(-1,1) translate(-220,0)">
+      <path class="flourish-stem" d="M110 25 C 128 21, 138 9, 163 11 C 179 12, 189 21, 206 16"/>
+      <path class="flourish-leaf" d="M138 15 C 143 7, 153 5, 158 11 C 153 17, 143 19, 138 15 Z" transform="rotate(-20 148 12)"/>
+      <path class="flourish-leaf" d="M163 21 C 166 13, 176 10, 181 16 C 176 22, 166 25, 163 21 Z" transform="rotate(8 173 16)"/>
+      <path class="flourish-leaf" d="M186 11 C 189 5, 197 3, 201 8 C 197 13, 189 15, 186 11 Z" transform="rotate(-12 194 9)"/>
+    </g>
+    <circle class="flourish-center" cx="110" cy="25" r="3.5"/>
+  </svg>
+
   <div class="monograma-cont">
     <div class="monograma"><span>AB</span></div>
   </div>
@@ -406,6 +450,22 @@
 
   <p class="nota-detalle">Tu presencia es el mejor regalo; si deseas traer un pequeño detalle, será recibido con cariño.</p>
 
+  <svg class="flourish abajo" viewBox="0 0 220 50" aria-hidden="true">
+    <g>
+      <path class="flourish-stem" d="M110 25 C 128 21, 138 9, 163 11 C 179 12, 189 21, 206 16"/>
+      <path class="flourish-leaf" d="M138 15 C 143 7, 153 5, 158 11 C 153 17, 143 19, 138 15 Z" transform="rotate(-20 148 12)"/>
+      <path class="flourish-leaf" d="M163 21 C 166 13, 176 10, 181 16 C 176 22, 166 25, 163 21 Z" transform="rotate(8 173 16)"/>
+      <path class="flourish-leaf" d="M186 11 C 189 5, 197 3, 201 8 C 197 13, 189 15, 186 11 Z" transform="rotate(-12 194 9)"/>
+    </g>
+    <g transform="scale(-1,1) translate(-220,0)">
+      <path class="flourish-stem" d="M110 25 C 128 21, 138 9, 163 11 C 179 12, 189 21, 206 16"/>
+      <path class="flourish-leaf" d="M138 15 C 143 7, 153 5, 158 11 C 153 17, 143 19, 138 15 Z" transform="rotate(-20 148 12)"/>
+      <path class="flourish-leaf" d="M163 21 C 166 13, 176 10, 181 16 C 176 22, 166 25, 163 21 Z" transform="rotate(8 173 16)"/>
+      <path class="flourish-leaf" d="M186 11 C 189 5, 197 3, 201 8 C 197 13, 189 15, 186 11 Z" transform="rotate(-12 194 9)"/>
+    </g>
+    <circle class="flourish-center" cx="110" cy="25" r="3.5"/>
+  </svg>
+
 </div>
 
 <script>
@@ -421,7 +481,7 @@
 
   // Lista de invitados y cuántos acompañantes puede llevar cada uno
   const INVITADOS = [
-    { nombre: "Jakelines Benedetti", acompanantes: 1 },
+    { nombre: "Jakeline Benedetti", acompanantes: 1 },
     { nombre: "Carmen Benedetti", acompanantes: 1 },
     { nombre: "Gemma Benedetti", acompanantes: 1 },
     { nombre: "Carolina Benedetti", acompanantes: 0 },
